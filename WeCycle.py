@@ -241,9 +241,17 @@ class Challenges(BoxLayout):
         return [challengeStr, n, selectedType]
 
     def assignChallenge(self):
+        j = 0
+        types = ["Garbage", "Compost", "Metal", "Paper", "Plastic"]
+        random.shuffle(types)
         for i in self.challenges:
             if self.challenges[i][0] == "":
-                self.challenges[i] = self.randomChallenge()
+                selectedType = types[j]
+                print (selectedType)
+                n = random.randint(3, 10)
+                challengeStr = str(f"Correctly recycle {n} pieces of {selectedType}")
+                self.challenges[i] = [challengeStr, n, selectedType]
+                j += 1
 
     def verifyChallenges(self):
         for i in self.challenges:
