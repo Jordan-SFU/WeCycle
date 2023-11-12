@@ -227,6 +227,14 @@ class Challenges(BoxLayout):
         self.dailyChallenge2.text = dc[1]
         self.dailyChallenge3.text = dc[2]
 
+class About(BoxLayout):
+    def __init__(self):
+        super().__init__()
+
+    # Return to Select Page Screen
+    def back(self):
+        myapp.screen_manager.current = "select"
+
 
 
 class WeCycleApp(App):
@@ -261,6 +269,11 @@ class WeCycleApp(App):
         self.challenges = Challenges()
         screen = Screen(name="challenges")
         screen.add_widget(self.challenges)
+        self.screen_manager.add_widget(screen)
+
+        self.about = About()
+        screen = Screen(name="about")
+        screen.add_widget(self.about)
         self.screen_manager.add_widget(screen)
 
         self.select = SelectPage()

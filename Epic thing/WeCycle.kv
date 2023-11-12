@@ -83,6 +83,10 @@
         size: root.width, root.height
         orientation: "vertical"
 
+        Image:
+            source: "Assets/Logo.png"
+            size_hint: 1, 2
+
         BoxLayout:
             size: root.width, root.height
             orientation: "horizontal"
@@ -101,25 +105,31 @@
         Button:
             text: "Litter Log"
             on_press: root.switch("activities")
-            background_color: kivy.utils.get_color_from_hex('#7289da')
+            background_color: 0, 0, 1, .5
             font_size: 24
         
         Button:
             text: "Your Stats"
             on_press: root.switch("stats")
-            background_color: kivy.utils.get_color_from_hex('#7289da')
+            background_color: 0, 0, 1, .5
             font_size: 24
         
         Button:
             text: "Leaderboard"
             on_press: root.switch("leaderboards")
-            background_color: kivy.utils.get_color_from_hex('#7289da')
+            background_color: 0, 0, 1, .5
             font_size: 24
 
         Button:
             text: "Challenges"
             on_press: root.switch("challenges")
-            background_color: kivy.utils.get_color_from_hex('#7289da')
+            background_color: 0, 0, 1, .5
+            font_size: 24
+
+        Button:
+            text: "About"
+            on_press: root.switch("about")
+            background_color: 0, 0, 1, .5
             font_size: 24
 
 <Activities>:
@@ -397,3 +407,16 @@
                 id: dc3
                 color: kivy.utils.get_color_from_hex('#1eb062')
                 font_size: 24
+
+<About>:
+    BoxLayout:
+        size: root.width, root.height
+        orientation: "vertical"
+
+        Button:
+            text: "Back"
+            size_hint: .1, .1
+            on_press: root.back()
+
+        Label:
+            text: "WeCycle is a free, student-made application designed to promote and encourage sustainability and environmental integrity within our communities. Goal: Start working on activities that help reduce ecological harm such as sorting out disposables into separate containers, picking up litter, or using alternative transportation methods besides gas vehicles. Click on the 'log activities' button and you will be able to perform the following: \nSorting Out: For every disposable item you insert into their corresponding container, whether it be your own trash or litter on the ground, click on the icons that represent the trash to gain points. More points will be awarded for more valuable items, such as compost! Alternative Transport: Every day you can enter the amount of kilometers you've travelled and with what tranpostation method you used, and you can gain points based on how much CO2 you saved relative to using a gas car! NOTE: WeCycle is in no way affiliated with or inspired by the completely separate game WiiFit™️. All similarities should be disregarded as a coincidence."
