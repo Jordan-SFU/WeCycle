@@ -10,6 +10,15 @@ import random
 
 # Global Litter Count
 litter = 0
+breakdown = {
+    "Garbage": 0,
+    "Compost": 0,
+    "Metal": 0,
+    "Paper": 0,
+    "Plastic": 0
+}
+
+
 username = "Guest User"
 date = datetime.now().strftime("%Y-%m-%d")
 dc = ["", "", ""]
@@ -74,6 +83,9 @@ class SelectPage(BoxLayout):
         activities_page = myapp.activities
         activities_page.updateLitterCount()
 
+        challenges_page = myapp.challenges
+        challenges_page.updateChallengeText()
+
         stats_page = myapp.stats
         stats_page.update_date()
         stats_page.update_score()
@@ -110,13 +122,15 @@ class Activities(BoxLayout):
         self.litterCount.text = f"{jsn.load(username, date)}"
 
     # Increment Litter Count
-    def incrementLitter(self, val):
+    def incrementLitter(self, val, type):
         global litter, date, username
         date = datetime.now().strftime("%Y-%m-%d")
         litter = jsn.load(username, date)
         litter = litter + val
         self.litterCount.text = f"{litter}"
         jsn.save(username, date, litter)
+
+        breakdown[type] = breakdown[type] + 1
 
         stats_screen = myapp.stats
         stats_screen.scoreLabel.text = f"{jsn.load(username, date)}"
@@ -196,12 +210,14 @@ class Leaderboard(BoxLayout):
         myapp.screen_manager.current = "select"
 
 class Challenges(BoxLayout):
+    challenges = {
+        "DailyChallenge1" : ["", 0, ""],
+        "DailyChallenge2" : ["", 0, ""],
+        "DailyChallenge3" : ["", 0, ""]
+    }
     def __init__(self):
         super().__init__()
-
-        dailyChallenge1 = ObjectProperty(None)
-        dailyChallenge2 = ObjectProperty(None)
-        dailyChallenge3 = ObjectProperty(None)
+        self.updateChallengeText()
 
     def back(self):
         myapp.screen_manager.current = "select"
@@ -212,20 +228,30 @@ class Challenges(BoxLayout):
         n = random.randint(1, 10)
 
         challengeStr = str(f"Correctly recycle {n} pieces of {selectedType}")
-        return challengeStr
-    
-    def assignChallenge(self):
-        global dc
-        for i in range(3):
-            if dc[i] == "":
-                dc[i] = self.randomChallenge()
+        return [challengeStr, n, selectedType]
 
+    def assignChallenge(self):
+        for i in self.challenges:
+            if self.challenges[i][0] == "":
+                self.challenges[i] = self.randomChallenge()
+
+    def verifyChallenges(self):
+        print("banana")
+        for i in self.challenges:
+            if breakdown[self.challenges[i][2]] >= self.challenges[i][1]:
+                self.challenges[i][0] = "Challenge Complete!"
+    
+    ## Should be used when changing between days
+    def resetChallenges(self):
+        for i in self.challenges:
+            self.challenges[i] = ["", 0, ""]
+                
     def updateChallengeText(self):
-        global dc
         self.assignChallenge()
-        self.dailyChallenge1.text = dc[0]
-        self.dailyChallenge2.text = dc[1]
-        self.dailyChallenge3.text = dc[2]
+        self.verifyChallenges()
+        self.dailyChallenge1.text = self.challenges["DailyChallenge1"][0]
+        self.dailyChallenge2.text = self.challenges["DailyChallenge2"][0]
+        self.dailyChallenge3.text = self.challenges["DailyChallenge3"][0]
 
 class About(BoxLayout):
     def __init__(self):
@@ -234,8 +260,6 @@ class About(BoxLayout):
     # Return to Select Page Screen
     def back(self):
         myapp.screen_manager.current = "select"
-
-
 
 class WeCycleApp(App):
     def build(self):
