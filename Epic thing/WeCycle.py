@@ -7,6 +7,7 @@ import kivy.utils
 from datetime import datetime, timedelta
 import JSONStuff as jsn
 import random
+import matplotlib.pyplot as plt
 
 # Global Litter Count
 litter = 0
