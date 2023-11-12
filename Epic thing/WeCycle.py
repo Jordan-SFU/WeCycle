@@ -7,7 +7,6 @@ import kivy.utils
 from datetime import datetime, timedelta
 import JSONStuff as jsn
 import random
-import matplotlib.pyplot as plt
 
 # Global Litter Count
 litter = 0
@@ -31,8 +30,6 @@ class Main(BoxLayout):
 
     def switch(self, guest):
         if(guest):
-            global username
-            username = "Guest User"
             myapp.screen_manager.current = "select"
 
             select_page = myapp.select
@@ -146,7 +143,9 @@ class Activities(BoxLayout):
 
     # Return to Select Page Screen
     def back(self):
+        myapp.screen_manager.transition = SlideTransition(direction="right")
         myapp.screen_manager.current = "select"
+        myapp.screen_manager.transition = SlideTransition(direction="left")
 
 class Stats(BoxLayout):
     def __init__(self):
@@ -160,7 +159,10 @@ class Stats(BoxLayout):
 
     # Return to Select Page Screen
     def back(self):
+        myapp.screen_manager.transition = SlideTransition(direction="right")
         myapp.screen_manager.current = "select"
+        myapp.screen_manager.transition = SlideTransition(direction="left")
+       
 
     def update_date(self):
         # Get the current date and format it as a string
@@ -210,7 +212,9 @@ class Leaderboard(BoxLayout):
 
     # Return to Select Page Screen
     def back(self):
+        myapp.screen_manager.transition = SlideTransition(direction="right")
         myapp.screen_manager.current = "select"
+        myapp.screen_manager.transition = SlideTransition(direction="left")
 
 class Challenges(BoxLayout):
     challenges = {
@@ -223,7 +227,9 @@ class Challenges(BoxLayout):
         self.updateChallengeText()
 
     def back(self):
+        myapp.screen_manager.transition = SlideTransition(direction="right")
         myapp.screen_manager.current = "select"
+        myapp.screen_manager.transition = SlideTransition(direction="left")
 
     def randomChallenge(self):
         types = ["Garbage", "Compost", "Metal", "Paper", "Plastic"]
@@ -239,12 +245,11 @@ class Challenges(BoxLayout):
                 self.challenges[i] = self.randomChallenge()
 
     def verifyChallenges(self):
-        print("banana")
         for i in self.challenges:
             if breakdown[self.challenges[i][2]] >= self.challenges[i][1]:
                 self.challenges[i][0] = "Challenge Complete!"
     
-    ## Should be used when changing between days
+    ## Should be used when changing
     def resetChallenges(self):
         for i in self.challenges:
             self.challenges[i] = ["", 0, ""]
@@ -262,7 +267,9 @@ class About(BoxLayout):
 
     # Return to Select Page Screen
     def back(self):
+        myapp.screen_manager.transition = SlideTransition(direction="right")
         myapp.screen_manager.current = "select"
+        myapp.screen_manager.transition = SlideTransition(direction="left")
 
 class WeCycleApp(App):
     def build(self):
@@ -312,3 +319,4 @@ class WeCycleApp(App):
 
 myapp = WeCycleApp()
 myapp.run()
+

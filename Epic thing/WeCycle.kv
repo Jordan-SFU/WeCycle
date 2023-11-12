@@ -21,21 +21,29 @@
             text:
 
         Button:
-            background_color: 0, 0, 1, .5
-            text: "Login"
-            font_name: "Comic"
+            size_hint: .5, .5
+            size: 10, 10
+            background_color: 0, 0, 0, 0
             on_press: root.switch(0)
-            size_hint: .7, .4
-            pos_hint: {"center_x": .5, "center_y": .5}
+            pos_hint: {"center_x": .5, "center_y": .5} 
+            Image:
+                source: "Assets/Login.png"
+                size: self.parent.size 
+                pos: self.parent.pos
+
         Label:
             text:
             size_hint: 1, .1
         Button:
-            background_color: 0, 0, 1, .5
-            text: "Guest"
+            size_hint: .5, .5
+            size: 10, 10
+            background_color: 0, 0, 0, 0
             on_press: root.switch(1)
-            size_hint: .7, .4
-            pos_hint: {"center_x": .5, "center_y": .5}
+            pos_hint: {"center_x": .5, "center_y": .5} 
+            Image:
+                source: "Assets/Guest.png"
+                size: self.parent.size
+                pos: self.parent.pos
         Label:
             text:
             size_hint: 1, .2
@@ -48,7 +56,7 @@
 
         Label:
             text: "Jordan M, Riley S, Bjorn F, Nick C"
-            font_size: 14
+            font_size: 15
             color: kivy.utils.get_color_from_hex('#1eb062')
             size_hint: 1, .2
 
@@ -73,7 +81,7 @@
 
         TextInput:
             id: inputID
-            size_hint: .75, .1
+            size_hint: .10, .1
             pos_hint: {"center_x": .5, "center_y": .5}
             font_size: 32
 
@@ -196,6 +204,8 @@
     BoxLayout:
         size: root.width, root.height
         orientation: "vertical"
+        do_scroll_y: True
+        do_scroll_x: False
 
         Button:
             text: "Back"
@@ -265,27 +275,27 @@
 
             Button:
                 text: "+"
-                on_press: root.incrementLitter(1)
+                on_press: root.incrementLitter(1, "Garbage")
                 size_hint: .2, .2
                 background_color: kivy.utils.get_color_from_hex('#7289da')
             Button:
                 text: "+"
-                on_press: root.incrementLitter(4)
+                on_press: root.incrementLitter(4, "Compost")
                 size_hint: .2, .2
                 background_color: kivy.utils.get_color_from_hex('#7289da')
             Button:
                 text: "+"
-                on_press: root.incrementLitter(2)
+                on_press: root.incrementLitter(2, "Metal")
                 size_hint: .2, .2
                 background_color: kivy.utils.get_color_from_hex('#7289da')
             Button:
                 text: "+"
-                on_press: root.incrementLitter(2)
+                on_press: root.incrementLitter(2, "Paper")
                 size_hint: .2, .2
                 background_color: kivy.utils.get_color_from_hex('#7289da')
             Button:
                 text: "+"
-                on_press: root.incrementLitter(3)
+                on_press: root.incrementLitter(3, "Plastic")
                 size_hint: .2, .2
                 background_color: kivy.utils.get_color_from_hex('#7289da')
                 
@@ -312,7 +322,8 @@
         Button:
             text: "Back"
             size_hint: .1, .5
-            on_press: root.back()
+            on_press:
+                root.back()
             background_color: 0, 0, 1, .5
 
         Image:
