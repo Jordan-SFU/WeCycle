@@ -1,0 +1,377 @@
+<Main>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "Assets/Background.png"
+    BoxLayout:
+        size: root.width, root.height
+        orientation: "vertical"
+
+        Image:
+            source: "Assets/Logo.png"
+            size_hint: 1, 1
+
+        Label:
+            text: "Welcome!"
+            font_size: 32
+            color: kivy.utils.get_color_from_hex('#1eb062')
+            size_hint: 1, .1
+        Label:
+            text:
+
+        Button:
+            background_color: kivy.utils.get_color_from_hex('#7289da')
+            text: "Login"
+            font_name: "Comic"
+            on_press: root.switch(0)
+            size_hint: 1, .2
+        Button:
+            text: "Guest"
+            on_press: root.switch(1)
+            size_hint: 1, .2
+
+<Login>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "Assets/Background.png"
+
+    usernameInput: inputID
+
+    BoxLayout:
+        size: root.width, root.height
+        orientation: "vertical"
+
+        Label:
+            text: "Enter your name:"
+            font_size: 24
+            color: kivy.utils.get_color_from_hex('#1eb062')
+            size_hint: 1, .2
+
+        TextInput:
+            id: inputID
+            size_hint: .75, .1
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+        Label:
+            text:
+            size_hint: 1, .5
+
+        Button:
+            text: "Login"
+            on_press: root.login()
+            size_hint: .5, .1
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+
+<SelectPage>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "Assets/Background.png"
+
+    usernameLabel: userID
+    dateLabel: date
+
+    BoxLayout:
+        size: root.width, root.height
+        orientation: "vertical"
+
+        BoxLayout:
+            size: root.width, root.height
+            orientation: "horizontal"
+
+            Label:
+                id: userID
+                text: "Welcome, User!"
+                color: kivy.utils.get_color_from_hex('#1eb062')
+                bold: True
+            Label:
+                id: date
+                text: ""
+                bold: True
+                color: kivy.utils.get_color_from_hex('#1eb062')
+            
+        Button:
+            text: "Log Activities"
+            on_press: root.switch("activities")
+        
+        Button:
+            text: "Your Stats"
+            on_press: root.switch("stats")
+        
+        Button:
+            text: "Leaderboard"
+            on_press: root.switch("leaderboards")
+
+        Button:
+            text: "Challenges"
+            on_press: root.switch("challenges")
+
+<Activities>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "Assets/Background.png"
+
+
+    litterCount: litterID
+
+    BoxLayout:
+        size: root.width, root.height
+        orientation: "vertical"
+
+        Button:
+            text: "Back"
+            size_hint: .1, .1
+            on_press: root.back()
+
+        Label:
+            text: "Your WeCycle Points!"
+            color: kivy.utils.get_color_from_hex('#1eb062')
+            size_hint: 1, .1
+
+        Label:
+            id: litterID
+            text: ""
+            size_hint: 1, .3
+            font_size: 64
+            bold: True
+            color: kivy.utils.get_color_from_hex('#1eb062')
+
+        Label:
+            text: "Points"
+            size_hint: 1, .1
+            color: kivy.utils.get_color_from_hex('#1eb062')
+
+        BoxLayout:
+            orientation: "horizontal"
+
+
+            Image:
+                source: "Assets/Trash.png"
+            Image:
+                source: "Assets/Compost.png"
+            Image:
+                source: "Assets/Metal.png"
+            Image:
+                source: "Assets/Paper.png"
+            Image:
+                source: "Assets/Plastic.png"
+
+        BoxLayout:
+            orientation: "horizontal"
+
+            Label:
+                text: "Garbage"
+                size_hint: .1, .1
+                color: kivy.utils.get_color_from_hex('#1eb062')
+            Label:
+                text: "Compost"
+                size_hint: .1, .1
+                color: kivy.utils.get_color_from_hex('#1eb062')
+            Label:
+                text: "Metal"
+                size_hint: .1, .1
+                color: kivy.utils.get_color_from_hex('#1eb062')
+            Label:
+                text: "Paper"
+                size_hint: .1, .1
+                color: kivy.utils.get_color_from_hex('#1eb062')
+            Label:
+                text: "Plastic"
+                size_hint: .1, .1
+                color: kivy.utils.get_color_from_hex('#1eb062')
+
+        BoxLayout:
+            orientation: "horizontal"
+
+            Button:
+                text: "+"
+                on_press: root.incrementLitter(1)
+                size_hint: .2, .2
+            Button:
+                text: "+"
+                on_press: root.incrementLitter(4)
+                size_hint: .2, .2
+            Button:
+                text: "+"
+                on_press: root.incrementLitter(2)
+                size_hint: .2, .2
+            Button:
+                text: "+"
+                on_press: root.incrementLitter(2)
+                size_hint: .2, .2
+            Button:
+                text: "+"
+                on_press: root.incrementLitter(3)
+                size_hint: .2, .2
+                
+        Button:
+            text: "-"
+            on_press: root.incrementLitter(-1)
+            size_hint: 1, .2
+
+<Stats>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "Assets/Background.png"
+
+    dateLabel2: date2
+    scoreLabel: score
+
+    BoxLayout:
+        size: root.width, root.height
+        orientation: "vertical"
+
+        Button:
+            text: "Back"
+            size_hint: .1, .1
+            on_press: root.back()
+
+        Label:
+            text: "Your Stats on"
+            font_size: 32
+            color: kivy.utils.get_color_from_hex('#1eb062')
+
+        Label:
+            id: date2
+            font_size: 32
+            bold: True
+            color: kivy.utils.get_color_from_hex('#1eb062')
+            
+        BoxLayout:
+            size: root.width, root.height
+            orientation: "horizontal"
+
+            Label:
+                text: "Points: "
+                font_size: 32
+                color: kivy.utils.get_color_from_hex('#1eb062')
+
+            Label:
+                id: score
+                font_size: 64
+                bold: True
+                color: kivy.utils.get_color_from_hex('#1eb062')
+
+        BoxLayout:
+            size: root.width, root.height
+            orientation: "horizontal"
+
+            Button:
+                text: "<-"
+                on_press: root.preview(-1)
+                size_hint: .2, .3
+
+            Button:
+                text: "->"
+                on_press: root.preview(1)
+                size_hint: .2, .3
+
+        Button:
+            text: "Jump to Today"
+            on_press: root.jumpToToday()
+            size_hint: 1, .3
+
+
+<Leaderboard>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "Assets/Background.png"
+
+    highscoreLabel: highscore
+    highscoreDateLabel: highscoreDate
+    highscoreUserLabel: highscoreUser
+
+    BoxLayout:
+        size: root.width, root.height
+        orientation: "vertical"
+
+        Button:
+            text: "Back"
+            size_hint: .1, .1
+            on_press: root.back()
+
+        Label:
+            text: "Local highscore is"
+            font_size: 24
+            color: kivy.utils.get_color_from_hex('#1eb062')
+
+        Label:
+            id: highscore
+            font_size: 64
+            bold: True
+            color: kivy.utils.get_color_from_hex('#1eb062')
+
+        Label:
+            text: "set on"
+            font_size: 24
+            color: kivy.utils.get_color_from_hex('#1eb062')
+
+        Label:
+            id: highscoreDate
+            font_size: 48
+            bold: True
+            color: kivy.utils.get_color_from_hex('#1eb062')
+
+        Label:
+            text: "by"
+            font_size: 24
+            color: kivy.utils.get_color_from_hex('#1eb062')
+
+        Label:
+            id: highscoreUser
+            font_size: 48
+            bold: True
+            color: kivy.utils.get_color_from_hex('#1eb062')
+
+<Challenges>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "Assets/Background.png"
+
+    dailyChallenge1: dc1
+    dailyChallenge2: dc2
+    dailyChallenge3: dc3
+
+    BoxLayout:
+        size: root.width, root.height
+        orientation: "vertical"
+
+        Button:
+            text: "Back"
+            size_hint: .1, .1
+            on_press: root.back()
+
+        Label:
+            text: "Daily Challenges"
+            color: kivy.utils.get_color_from_hex('#1eb062')
+
+        BoxLayout:
+            orientation: "vertical"
+
+            Label:
+                text: "placeholder1"
+                id: dc1
+                color: kivy.utils.get_color_from_hex('#1eb062')
+
+            Label:
+                text: "placeholder2"
+                id: dc2
+                color: kivy.utils.get_color_from_hex('#1eb062')
+
+            Label:
+                text: "placeholder3"
+                id: dc3
+                color: kivy.utils.get_color_from_hex('#1eb062')
