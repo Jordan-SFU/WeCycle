@@ -45,10 +45,18 @@ class Login(BoxLayout):
     def login(self):
         global username
         username = self.usernameInput.text
+        if username == "":
+            myapp.screen_manager.current = "login"
+            return
         myapp.screen_manager.current = "select"
 
         select_page = myapp.select
         select_page.usernameLabel.text = f"Welcome, {username}!"
+
+    def back(self):
+        myapp.screen_manager.transition = SlideTransition(direction="right")
+        myapp.screen_manager.current = "main"
+        myapp.screen_manager.transition = SlideTransition(direction="left")
 
 # Select Page Screen
 class SelectPage(BoxLayout):

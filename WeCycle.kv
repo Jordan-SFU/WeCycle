@@ -76,8 +76,17 @@
     usernameInput: inputID
 
     BoxLayout:
+
         size: root.width, root.height
         orientation: "vertical"
+
+        Button:
+            size_hint: (1, None)
+            size: root.width, 67
+            text: "Back"
+            font_size: 20
+            on_press: root.back()
+            background_color: 0, 0, 1, .5
 
         Label:
             text: "Enter your name:"
