@@ -2,8 +2,6 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen, SlideTransition
 from kivy.properties import ObjectProperty
-from kivy.lang import Builder
-import kivy.utils
 from datetime import datetime, timedelta
 import JSONStuff as jsn
 import random
@@ -127,11 +125,13 @@ class Activities(BoxLayout):
         global litter, date, username
         date = datetime.now().strftime("%Y-%m-%d")
         litter = jsn.load(username, date)
-        litter = litter + val
+        if val > 0 or litter > 0:
+            litter = litter + val
         self.litterCount.text = f"{litter}"
         jsn.save(username, date, litter)
 
-        breakdown[type] = breakdown[type] + 1
+        if type != "None":
+            breakdown[type] = breakdown[type] + 1
 
         stats_screen = myapp.stats
         stats_screen.scoreLabel.text = f"{jsn.load(username, date)}"

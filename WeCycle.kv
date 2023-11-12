@@ -7,7 +7,7 @@
     BoxLayout:
         size: root.width, root.height
         orientation: "vertical"
-
+        background_color: 0, 0, 0, 0
         Image:
             source: "Assets/Logo.png"
             size_hint: 1, 1
@@ -24,9 +24,14 @@
             size_hint: .5, .5
             size: 10, 10
             background_color: 0, 0, 0, 0
-            on_press: root.switch(0)
+            on_press: 
+                image.source = "Assets/DarkerLogin.png"
+            on_release:
+                image.source = "Assets/Login.png"
+                root.switch(0)
             pos_hint: {"center_x": .5, "center_y": .5} 
             Image:
+                id: image
                 source: "Assets/Login.png"
                 size: self.parent.size 
                 pos: self.parent.pos
@@ -38,7 +43,11 @@
             size_hint: .5, .5
             size: 10, 10
             background_color: 0, 0, 0, 0
-            on_press: root.switch(1)
+            on_press: 
+                image.source = "Assets/DarkerLogin.png"
+            on_release:
+                image.source = "Assets/Login.png"
+                root.switch(1)
             pos_hint: {"center_x": .5, "center_y": .5} 
             Image:
                 source: "Assets/Guest.png"
@@ -48,14 +57,9 @@
             text:
             size_hint: 1, .2
 
-        Label:
-            text: "An Application by"
-            font_size: 20
-            color: kivy.utils.get_color_from_hex('#1eb062')
-            size_hint: 1, .2
 
         Label:
-            text: "Jordan M, Riley S, Bjorn F, Nick C"
+            text: "© Jordan M, Riley S, Bjorn F, Nick C"
             font_size: 15
             color: kivy.utils.get_color_from_hex('#1eb062')
             size_hint: 1, .2
@@ -96,7 +100,7 @@
             pos_hint: {"center_x": .5, "center_y": .5}
             background_color: 0, 0, 1, .5
 
-
+ 
 <SelectPage>:
     canvas.before:
         Rectangle:
@@ -112,7 +116,10 @@
         orientation: "vertical"
 
         Button:
+            size_hint: (1, None)
+            size: root.width, 67
             text: "Log Out"
+            font_size: 20
             on_press: root.switch("main")
             background_color: 0, 0, 1, .5
 
@@ -208,8 +215,10 @@
         do_scroll_x: False
 
         Button:
+            size_hint: (1, None)
+            size: root.width, 67
             text: "Back"
-            size_hint: .1, .5
+            font_size: 20
             on_press: root.back()
             background_color: 0, 0, 1, .5
 
@@ -301,7 +310,7 @@
                 
         Button:
             text: "-"
-            on_press: root.incrementLitter(-1)
+            on_press: root.incrementLitter(-1, "None")
             size_hint: 1, .4
             background_color: 1, 0, 0, .5
 
@@ -320,10 +329,11 @@
         orientation: "vertical"
 
         Button:
+            size_hint: (1, None)
+            size: root.width, 67
             text: "Back"
-            size_hint: .1, .5
-            on_press:
-                root.back()
+            font_size: 20
+            on_press: root.back()
             background_color: 0, 0, 1, .5
 
         Image:
@@ -396,8 +406,10 @@
         orientation: "vertical"
 
         Button:
+            size_hint: (1, None)
+            size: root.width, 67
             text: "Back"
-            size_hint: .1, .5
+            font_size: 20
             on_press: root.back()
             background_color: 0, 0, 1, .5
 
@@ -457,8 +469,10 @@
         orientation: "vertical"
 
         Button:
+            size_hint: (1, None)
+            size: root.width, 67
             text: "Back"
-            size_hint: .1, .5
+            font_size: 20
             on_press: root.back()
             background_color: 0, 0, 1, .5
 
@@ -511,8 +525,10 @@
         orientation: "vertical"
 
         Button:
+            size_hint: (1, None)
+            size: root.width, 67
             text: "Back"
-            size_hint: .1, .5
+            font_size: 20
             on_press: root.back()
             background_color: 0, 0, 1, .5
 
