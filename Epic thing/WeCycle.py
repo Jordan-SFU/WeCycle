@@ -7,6 +7,7 @@ import kivy.utils
 from datetime import datetime, timedelta
 import JSONStuff as jsn
 import random
+from kivy.config import Config
 
 # Global Litter Count
 litter = 0
@@ -270,6 +271,11 @@ class About(BoxLayout):
         myapp.screen_manager.transition = SlideTransition(direction="right")
         myapp.screen_manager.current = "select"
         myapp.screen_manager.transition = SlideTransition(direction="left")
+
+# Set the size of the window
+Config.set('graphics', 'resizable', 0)
+Config.set('graphics', 'width', 360)
+Config.set('graphics', 'height', 640)
 
 class WeCycleApp(App):
     def build(self):
