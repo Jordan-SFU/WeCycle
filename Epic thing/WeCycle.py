@@ -9,7 +9,7 @@ import JSONStuff as jsn
 import random
 
 # Global Litter Count
-banana = 2
+banana = 6
 litter = 0
 username = "Guest User"
 date = datetime.now().strftime("%Y-%m-%d")
