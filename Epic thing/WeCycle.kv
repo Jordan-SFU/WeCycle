@@ -152,23 +152,23 @@
             on_press: root.back()
             background_color: kivy.utils.get_color_from_hex('#7289da')
 
-        Label:
-            text: "Your WeCycle Points!"
-            color: kivy.utils.get_color_from_hex('#1eb062')
-            size_hint: 1, .1
+        Image:
+            source: "Assets/Logo.png"
+            size_hint: 1, 2
 
         Label:
             id: litterID
             text: ""
-            size_hint: 1, .3
-            font_size: 64
+            size_hint: 1, 1
+            font_size: 96
             bold: True
             color: kivy.utils.get_color_from_hex('#1eb062')
 
         Label:
-            text: "Points"
-            size_hint: 1, .1
+            text: "\nPoints\n"
+            size_hint: 1, .5
             color: kivy.utils.get_color_from_hex('#1eb062')
+            font_size: 32
 
         BoxLayout:
             orientation: "horizontal"
@@ -190,23 +190,23 @@
 
             Label:
                 text: "Garbage"
-                size_hint: .1, .1
+                size_hint: .2, .1
                 color: kivy.utils.get_color_from_hex('#1eb062')
             Label:
                 text: "Compost"
-                size_hint: .1, .1
+                size_hint: .2, .1
                 color: kivy.utils.get_color_from_hex('#1eb062')
             Label:
                 text: "Metal"
-                size_hint: .1, .1
+                size_hint: .2, .1
                 color: kivy.utils.get_color_from_hex('#1eb062')
             Label:
                 text: "Paper"
-                size_hint: .1, .1
+                size_hint: .2, .1
                 color: kivy.utils.get_color_from_hex('#1eb062')
             Label:
                 text: "Plastic"
-                size_hint: .1, .1
+                size_hint: .2, .1
                 color: kivy.utils.get_color_from_hex('#1eb062')
 
         BoxLayout:
@@ -215,33 +215,33 @@
             Button:
                 text: "+"
                 on_press: root.incrementLitter(1)
-                size_hint: .2, .2
+                size_hint: .2, .4
                 background_color: kivy.utils.get_color_from_hex('#7289da')
             Button:
                 text: "+"
                 on_press: root.incrementLitter(4)
-                size_hint: .2, .2
+                size_hint: .2, .4
                 background_color: kivy.utils.get_color_from_hex('#7289da')
             Button:
                 text: "+"
                 on_press: root.incrementLitter(2)
-                size_hint: .2, .2
+                size_hint: .2, .4
                 background_color: kivy.utils.get_color_from_hex('#7289da')
             Button:
                 text: "+"
                 on_press: root.incrementLitter(2)
-                size_hint: .2, .2
+                size_hint: .2, .4
                 background_color: kivy.utils.get_color_from_hex('#7289da')
             Button:
                 text: "+"
                 on_press: root.incrementLitter(3)
-                size_hint: .2, .2
+                size_hint: .2, .4
                 background_color: kivy.utils.get_color_from_hex('#7289da')
                 
         Button:
             text: "-"
             on_press: root.incrementLitter(-1)
-            size_hint: 1, .2
+            size_hint: 1, .4
 
 <Stats>:
     canvas.before:
@@ -261,6 +261,10 @@
             text: "Back"
             size_hint: .1, .1
             on_press: root.back()
+
+        Image:
+            source: "Assets/Logo.png"
+            size_hint: 1, 2
 
         Label:
             text: "Your Stats on"
@@ -327,6 +331,10 @@
             text: "Back"
             size_hint: .1, .1
             on_press: root.back()
+
+        Image:
+            source: "Assets/Logo.png"
+            size_hint: 1, 2
 
         Label:
             text: "Local highscore is"
@@ -409,6 +417,12 @@
                 font_size: 24
 
 <About>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "Assets/Background.png"
+
     BoxLayout:
         size: root.width, root.height
         orientation: "vertical"
@@ -418,5 +432,46 @@
             size_hint: .1, .1
             on_press: root.back()
 
+        Image:
+            source: "Assets/Logo.png"
+            size_hint: 1, 1
+
         Label:
-            text: "WeCycle is a free, student-made application designed to promote and encourage sustainability and environmental integrity within our communities. Goal: Start working on activities that help reduce ecological harm such as sorting out disposables into separate containers, picking up litter, or using alternative transportation methods besides gas vehicles. Click on the 'log activities' button and you will be able to perform the following: \nSorting Out: For every disposable item you insert into their corresponding container, whether it be your own trash or litter on the ground, click on the icons that represent the trash to gain points. More points will be awarded for more valuable items, such as compost! Alternative Transport: Every day you can enter the amount of kilometers you've travelled and with what tranpostation method you used, and you can gain points based on how much CO2 you saved relative to using a gas car! NOTE: WeCycle is in no way affiliated with or inspired by the completely separate game WiiFit™️. All similarities should be disregarded as a coincidence."
+            text_size: self.width, None
+            size_hint: 1, None
+            height: self.texture_size[1]
+            text: "     WeCycle is a free, student-made application designed to promote and encourage sustainability and environmental integrity within our communities. \n"
+            font_size: 16
+            color: kivy.utils.get_color_from_hex('#1eb062')
+
+        Label:
+            text_size: self.width, None
+            size_hint: 1, None
+            height: self.texture_size[1]
+            text: "     Goal: Start working on activities that help reduce ecological harm such as sorting out disposables into separate containers, picking up litter, or using alternative transportation methods besides gas vehicles. Click on the 'log activities' button and you will be able to perform the following:\n"
+            font_size: 16
+            color: kivy.utils.get_color_from_hex('#1eb062')
+
+        Label:
+            text_size: self.width, None
+            size_hint: 1, None
+            height: self.texture_size[1]
+            text: "  • Sorting Out:"
+            font_size: 20
+            color: kivy.utils.get_color_from_hex('#1eb062')
+
+        Label:
+            text_size: self.width, None
+            size_hint: 1, None
+            height: self.texture_size[1]
+            text: "     For every disposable item you insert into their corresponding container, whether it be your own trash or litter on the ground, click on the icons that represent the trash to gain points. More points will be awarded for more valuable items, such as compost!"
+            font_size: 16
+            color: kivy.utils.get_color_from_hex('#1eb062')
+
+        Label:
+            text_size: self.width, None
+            size_hint: 1, None
+            height: self.texture_size[1]
+            text: "\n\n     NOTE: WeCycle is in no way affiliated with or inspired by the completely separate game WiiFit™️. All similarities should be disregarded as a coincidence."
+            font_size: 14
+            color: kivy.utils.get_color_from_hex('#1eb062')
