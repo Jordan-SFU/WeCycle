@@ -21,6 +21,8 @@ class Main(BoxLayout):
 
     def switch(self, guest):
         if(guest):
+            global username
+            username = "Guest User"
             myapp.screen_manager.current = "select"
 
             select_page = myapp.select

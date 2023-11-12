@@ -21,15 +21,35 @@
             text:
 
         Button:
-            background_color: kivy.utils.get_color_from_hex('#7289da')
+            background_color: 0, 0, 1, .5
             text: "Login"
             font_name: "Comic"
             on_press: root.switch(0)
-            size_hint: 1, .2
+            size_hint: .7, .4
+            pos_hint: {"center_x": .5, "center_y": .5}
+        Label:
+            text:
+            size_hint: 1, .1
         Button:
-            background_color: kivy.utils.get_color_from_hex('#7289da')
+            background_color: 0, 0, 1, .5
             text: "Guest"
             on_press: root.switch(1)
+            size_hint: .7, .4
+            pos_hint: {"center_x": .5, "center_y": .5}
+        Label:
+            text:
+            size_hint: 1, .2
+
+        Label:
+            text: "An Application by"
+            font_size: 20
+            color: kivy.utils.get_color_from_hex('#1eb062')
+            size_hint: 1, .2
+
+        Label:
+            text: "Jordan M., Riley S, Bjorn F, Nick C."
+            font_size: 14
+            color: kivy.utils.get_color_from_hex('#1eb062')
             size_hint: 1, .2
 
 <Login>:
@@ -83,6 +103,11 @@
         size: root.width, root.height
         orientation: "vertical"
 
+        Button:
+            text: "Log Out"
+            on_press: root.switch("main")
+            background_color: 0, 0, 1, .5
+
         Image:
             source: "Assets/Logo.png"
             size_hint: 1, 2
@@ -107,30 +132,56 @@
             on_press: root.switch("activities")
             background_color: 0, 0, 1, .5
             font_size: 24
+            size_hint: .7, 1
+            pos_hint: {"center_x": .5, "center_y": .5}
+            
+        Label:
+            text:
+            size_hint: 1, .1
         
         Button:
             text: "Your Stats"
             on_press: root.switch("stats")
             background_color: 0, 0, 1, .5
             font_size: 24
+            size_hint: .7, 1
+            pos_hint: {"center_x": .5, "center_y": .5}
+        Label:
+            text:
+            size_hint: 1, .1
         
         Button:
             text: "Leaderboard"
             on_press: root.switch("leaderboards")
             background_color: 0, 0, 1, .5
             font_size: 24
+            size_hint: .7, 1
+            pos_hint: {"center_x": .5, "center_y": .5}
+        Label:
+            text:
+            size_hint: 1, .1
 
         Button:
             text: "Challenges"
             on_press: root.switch("challenges")
             background_color: 0, 0, 1, .5
             font_size: 24
+            size_hint: .7, 1
+            pos_hint: {"center_x": .5, "center_y": .5}
+        Label:
+            text:
+            size_hint: 1, .1
 
         Button:
             text: "About"
             on_press: root.switch("about")
             background_color: 0, 0, 1, .5
             font_size: 24
+            size_hint: .7, 1
+            pos_hint: {"center_x": .5, "center_y": .5}
+        Label:
+            text:
+            size_hint: 1, .1
 
 <Activities>:
     canvas.before:
@@ -148,9 +199,9 @@
 
         Button:
             text: "Back"
-            size_hint: .1, .1
+            size_hint: .1, .5
             on_press: root.back()
-            background_color: kivy.utils.get_color_from_hex('#7289da')
+            background_color: 0, 0, 1, .5
 
         Image:
             source: "Assets/Logo.png"
@@ -259,8 +310,9 @@
 
         Button:
             text: "Back"
-            size_hint: .1, .1
+            size_hint: .1, .5
             on_press: root.back()
+            background_color: 0, 0, 1, .5
 
         Image:
             source: "Assets/Logo.png"
@@ -329,8 +381,9 @@
 
         Button:
             text: "Back"
-            size_hint: .1, .1
+            size_hint: .1, .5
             on_press: root.back()
+            background_color: 0, 0, 1, .5
 
         Image:
             source: "Assets/Logo.png"
@@ -386,8 +439,9 @@
 
         Button:
             text: "Back"
-            size_hint: .1, .1
+            size_hint: .1, .5
             on_press: root.back()
+            background_color: 0, 0, 1, .5
 
         Label:
             text: "Daily Challenges"
@@ -429,8 +483,9 @@
 
         Button:
             text: "Back"
-            size_hint: .1, .1
+            size_hint: .1, .5
             on_press: root.back()
+            background_color: 0, 0, 1, .5
 
         Image:
             source: "Assets/Logo.png"
