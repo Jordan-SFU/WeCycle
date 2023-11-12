@@ -31,6 +31,9 @@ class Main(BoxLayout):
         if(guest):
             myapp.screen_manager.current = "select"
 
+            global username
+            username = "Guest User"
+
             select_page = myapp.select
             select_page.usernameLabel.text = f"Welcome, {username}!"
         else:
