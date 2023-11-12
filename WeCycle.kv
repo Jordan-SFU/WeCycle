@@ -39,17 +39,19 @@
         Label:
             text:
             size_hint: 1, .1
+
         Button:
             size_hint: .5, .5
             size: 10, 10
             background_color: 0, 0, 0, 0
             on_press: 
-                image.source = "Assets/DarkerLogin.png"
+                image2.source = "Assets/DarkerGuest.png"
             on_release:
-                image.source = "Assets/Login.png"
+                image2.source = "Assets/Guest.png"
                 root.switch(1)
             pos_hint: {"center_x": .5, "center_y": .5} 
             Image:
+                id: image2
                 source: "Assets/Guest.png"
                 size: self.parent.size
                 pos: self.parent.pos
@@ -467,7 +469,6 @@
     BoxLayout:
         size: root.width, root.height
         orientation: "vertical"
-
         Button:
             size_hint: (1, None)
             size: root.width, 67
@@ -489,6 +490,8 @@
                 text: "placeholder1"
                 id: dc1
                 color: kivy.utils.get_color_from_hex('#1eb062')
+                halign: 'center'
+                valign: 'middle'
                 font_size: 24
                 text_size: self.width, None
                 size_hint: 1, None
@@ -497,6 +500,8 @@
                 text: "placeholder2"
                 id: dc2
                 color: kivy.utils.get_color_from_hex('#1eb062')
+                halign: 'center'
+                valign: 'middle'
                 font_size: 24
                 text_size: self.width, None
                 size_hint: 1, None
@@ -505,6 +510,8 @@
                 text: "placeholder3"
                 id: dc3
                 color: kivy.utils.get_color_from_hex('#1eb062')
+                halign: 'center'
+                valign: 'middle'
                 font_size: 24
                 text_size: self.width, None
                 size_hint: 1, None
@@ -540,38 +547,50 @@
             text_size: self.width, None
             size_hint: 1, None
             height: self.texture_size[1]
+            halign: 'center'
+            valign: 'middle'
+            padding: 5, 5
             text: "     WeCycle is a free, student-made application designed to promote and encourage sustainability and environmental integrity within our communities. \n"
             font_size: 16
-            color: kivy.utils.get_color_from_hex('#1eb062')
+            color: kivy.utils.get_color_from_hex('#1a904c')
 
         Label:
             text_size: self.width, None
             size_hint: 1, None
             height: self.texture_size[1]
+            halign: 'center'
+            padding: 5, 5
             text: "     Goal: Start working on activities that help reduce ecological harm such as sorting out disposables into separate containers, picking up litter, or using alternative transportation methods besides gas vehicles. Click on the 'log activities' button and you will be able to perform the following:\n"
             font_size: 16
-            color: kivy.utils.get_color_from_hex('#1eb062')
+            color: kivy.utils.get_color_from_hex('#1a904c')
 
         Label:
             text_size: self.width, None
             size_hint: 1, None
             height: self.texture_size[1]
-            text: "  • Sorting Out:"
+            halign: 'center'
+            padding: 5, 5
+            text: "  Sorting Out"
             font_size: 20
-            color: kivy.utils.get_color_from_hex('#1eb062')
+            color: kivy.utils.get_color_from_hex('#1a904c')
 
         Label:
             text_size: self.width, None
             size_hint: 1, None
             height: self.texture_size[1]
+            halign: 'center'
+            padding: 5, 5
             text: "     For every disposable item you insert into their corresponding container, whether it be your own trash or litter on the ground, click on the icons that represent the trash to gain points. More points will be awarded for more valuable items, such as compost!"
             font_size: 16
-            color: kivy.utils.get_color_from_hex('#1eb062')
+            color: kivy.utils.get_color_from_hex('#1a904c')
 
         Label:
             text_size: self.width, None
             size_hint: 1, None
             height: self.texture_size[1]
+            halign: 'center'
+            valign: 'middle'
+            padding: 5, 5
             text: "\n\n     NOTE: WeCycle is in no way affiliated with or inspired by the completely separate game WiiFit™️. All similarities should be disregarded as a coincidence."
             font_size: 14
-            color: kivy.utils.get_color_from_hex('#1eb062')
+            color: kivy.utils.get_color_from_hex('#1a904c')
